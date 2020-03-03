@@ -10,6 +10,7 @@
         {{ content_for_header }}
         <!-- Header hook for plugins -->
         {{ 'application.scss.css' | asset_url | stylesheet_tag }}
+        {{ 'jquery-3.3.1.min.js' | asset_url | script_tag }}
         {{ 'application.js' | asset_url | script_tag }}
     </head>
     <body>
@@ -20,5 +21,7 @@
             {{ content_for_layout }}
             {% include 'footer' %}
         </main>
+
+        {% include 'currencies' %}
     </body>
 </html>
