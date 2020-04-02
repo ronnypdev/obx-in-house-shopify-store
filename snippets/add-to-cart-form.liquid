@@ -8,10 +8,14 @@
     {% assign has_multiple_options = true %}
 {% endif %}
 
+{% if has_multiple_variants %}
+    {% include 'get-variants-with-quantity-json' with product: product %}
+{% endif %}
 
-<form action="/cart/add" enctype="multipart/form-data" id="add-to-cart-form" method="post">
 
-    {% if has_multiple_variants or has_multiple_options %}
+<form action="/cart/add" enctype="multipart/form-data" id="add-to-cart-form" method="post" data-variants="{{ variants_with_quantity_json | url_param_escape }}">
+
+    {% if has_multiple_options or has_multiple_variants %}
         <select id="productSelect">
             {% for variant in product.variants %}
                 {% if variant.available %}
@@ -33,6 +37,7 @@
     <input class="js-variant-id" type="hidden" name="id" value="{% unless has_multiple_variants %}{{ product.variants.first.id }}{% endunless %}">
 
     <span class="js-price" data-default-price="{{ product.prize | money }}">{{ current_variant.price | money }}</span>
+
     <label for="Quantity">quantity</label>
     <input id="Quantity" min="1" name="quantity" type="number" value="1">
     <button id="add-to-cart-button" name="add" type="submit">Add to cart</button>
