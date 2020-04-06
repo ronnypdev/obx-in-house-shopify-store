@@ -11,7 +11,7 @@
 
     {% include 'currency-picker' %}
 
-    <a href="/cart">
+    <a class="js-cart-link" href="/cart">
         {{ 'cart.button.count_html' | t: itemCount: cart.item_count }}
     </a>
 
