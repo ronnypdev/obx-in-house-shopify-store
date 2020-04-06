@@ -13,25 +13,33 @@
 {% endif %}
 
 
+{% assign can_add_to_cart = false %}
+{% if has_selected_variant and product.selected_variant.available %}
+    {% assign can_add_to_cart = true %}
+{% elsif has_multiple_variants == false and product.available %}
+    {% assign can_add_to_cart = true %}
+{% endif %}
+
+
 <form action="/cart/add" enctype="multipart/form-data" id="add-to-cart-form" method="post" data-variants="{{ variants_with_quantity_json | url_param_escape }}">
 
     {% if has_multiple_options or has_multiple_variants %}
-        <select id="productSelect">
-            {% for variant in product.variants %}
-                {% if variant.available %}
-                    <option value="{{ variant.id }}">
-                        {{ variant.title }}
-                        -
-                        {{ variant.price | money_with_currency }}
-                    </option>
-                {% else %}
-                    <option disabled="disabled">
-                        {{ variant.title }}
-                        - sold out
-                    </option>
-                {% endif %}
-            {% endfor %}
-        </select>
+
+        {% for option in product.options_with_values %}
+            {% assign option_name = 'option' | append: option.position %}
+
+            {% assign selected = false %}
+            {% if has_selected_variant %}
+                {% assign selected = product.selected_variant[option_name] %}
+            {% endif %}
+
+
+            {% if option.name != 'Color' %}
+                {% include 'product-option-row' with option: option, option_name: option_name, type: 'select', selected: selected %}
+            {% else %}
+                {% include 'product-option-row' with option: option, option_name: option_name, selected: selected %}
+            {% endif %}
+        {% endfor %}
     {% endif %}
 
     <input class="js-variant-id" type="hidden" name="id" value="{% unless has_multiple_variants %}{{ product.variants.first.id }}{% endunless %}">
@@ -40,5 +48,5 @@
 
     <label for="Quantity">quantity</label>
     <input id="Quantity" min="1" name="quantity" type="number" value="1">
-    <button id="add-to-cart-button" name="add" type="submit">Add to cart</button>
+    <button id="add-to-cart-button" name="add" type="submit" {% if can_add_to_cart != true %} disabled {% endif %}>Add to cart</button>
 </form>
