@@ -84,7 +84,7 @@ $(document).ready(function () {
         currencyPickerSelector,
         currencyPicker.onCurrencyChanged
       );
-    }
+    },
   };
 
   currencyPicker.init();
@@ -109,7 +109,7 @@ $(document).ready(function () {
       let formOptions = {
         option1: null,
         option2: null,
-        option3: null
+        option3: null,
       };
 
       selectedVariant = null;
@@ -138,6 +138,21 @@ $(document).ready(function () {
       let canAddToCart = hasVariant && selectedVariant.inventory_quantity > 0;
       let $id = $form.find('.js-variant-id');
       let $addToCartButton = $form.find('#add-to-cart-button');
+      let $price = $form.find('.js-price');
+      let formattedVariantPrice;
+      let priceHTML;
+
+      if (hasVariant) {
+        formattedVariantPrice = '$' + (selectedVariant.price / 100).toFixed(2);
+        priceHTML = '<span class="money">' + formattedVariantPrice + '</span>';
+        window.history.replaceState(
+          null,
+          null,
+          '?variant=' + selectedVariant.id
+        );
+      } else {
+        priceHTML = $price.attr('data-default-price');
+      }
 
       if (canAddToCart) {
         $id.val(selectedVariant.id);
@@ -146,6 +161,9 @@ $(document).ready(function () {
         $id.val();
         $addToCartButton.prop('disabled', true);
       }
+
+      $price.html(priceHTML);
+      currencyPicker.onMoneySpanAdded();
     },
     init: function () {
       $(document).on(
@@ -158,8 +176,99 @@ $(document).ready(function () {
         addToCartFormSelector,
         productForm.validate
       );
-    }
+    },
   };
 
   productForm.init();
+
+  // Ajax
+  let miniCartContentsSelector = '.js-mini-cart-contents';
+  let ajaxify = {
+    onAddToCart: function (event) {
+      event.preventDefault();
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: ajaxify.onCartUpdated,
+        error: ajaxify.onError,
+      });
+    },
+
+    onLineRemoved: function (event) {
+      let isInMiniCart = lineItem.isInMiniCart(this);
+
+      if (isInMiniCart) {
+        event.preventDefault();
+        let $removeLink = $(this);
+        let $removeQuery = $removeLink.attr('href').split('change?')[1];
+        $.post('/cart/change.js', $removeQuery, ajaxify.onCartUpdated, 'json');
+      }
+    },
+
+    onCartUpdated: function () {
+      let $miniCartFieldSet = $(
+        miniCartContentsSelector + ' .js-cart-fieldset'
+      );
+      $miniCartFieldSet.prop('disabled', true);
+      $.ajax({
+        type: 'GET',
+        url: '/cart',
+        context: document.body,
+        success: function (context) {
+          let $dataCartContents = $(context).find('.js-cart-page-contents');
+          let dataCartHtml = $dataCartContents.html();
+          let dataCartItemCount = $dataCartContents.attr(
+            'data-cart-item-count'
+          );
+          let $miniCartContents = $(miniCartContentsSelector);
+          let $cartItemCount = $('.js-cart-item-count');
+          $cartItemCount.text(dataCartItemCount);
+          $miniCartContents.html(dataCartHtml);
+          currencyPicker.onMoneySpanAdded();
+          if (parseInt(dataCartItemCount)) {
+            ajaxify.openCart();
+          } else {
+            ajaxify.closeCart();
+          }
+        },
+      });
+    },
+    onError: function (XMLHttpRequest, textStatus) {
+      let data = XMLHttpRequest.responseJSON;
+      alert(data.status + ' - ' + data.message + ': ' + data.description);
+    },
+
+    onCartButtonClick: function (event) {
+      event.preventDefault();
+
+      let isCartOpen = $('html').hasClass('mini-cart-open');
+
+      if (!isCartOpen) {
+        ajaxify.openCart();
+      } else {
+        ajaxify.closeCart();
+      }
+    },
+
+    openCart: function () {
+      $('html').addClass('mini-cart-open');
+    },
+    closeCart: function () {
+      $('html').removeClass('mini-cart-open');
+    },
+
+    init: function () {
+      $(document).on('submit', addToCartFormSelector, ajaxify.onAddToCart);
+      $(document).on(
+        'click',
+        '#mini-cart .js-remove-line',
+        ajaxify.onLineRemoved
+      );
+      $(document).on('click', '.js-cart-link', ajaxify.onCartButtonClick);
+    },
+  };
+
+  ajaxify.init();
 });
