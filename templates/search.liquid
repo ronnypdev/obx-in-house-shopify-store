@@ -1,28 +1,33 @@
 <div id="page-search">
     {% include 'search-form' %}
-    {% if search.performed %}
-        {% assign product_count = 0 | times: 1 %}
-        {% for item in search.results %}
-            {% if item.object_type == 'product' %}
-                {% assign product_count = product_count | plus: 1 %}
-            {% endif %}
-        {% endfor %}
-
-        {% if product_count > 0 %}
-            {% assign filled_singular = 'search.results.filled_singular' | t %}
-            {% assign filled_plural = 'search.results.filled_plural' | t %}
-
-            <h2>{{ product_count }}
-                {{ product_count | | pluralize: filled_singular, filled_plural }}</h2>
+    <div id="search-results">
+        {% if search.performed %}
+            {% assign product_count = 0 | times: 1 %}
             {% for item in search.results %}
                 {% if item.object_type == 'product' %}
-                    {% include 'product-card' with product: item %}
+                    {% assign product_count = product_count | plus: 1 %}
                 {% endif %}
             {% endfor %}
 
-        {% else %}
-            <h2>{{ 'search.results.empty' | t: searchTerms: search.terms }}</h2>
-        {% endif %}
+            {% if product_count > 0 %}
+                {% assign filled_singular = 'search.results.filled_singular' | t %}
+                {% assign filled_plural = 'search.results.filled_plural' | t %}
 
+                <h2>{{ product_count }}
+                    {{ product_count | | pluralize: filled_singular, filled_plural }}</h2>
+
+                <div class="result-grid">
+                    {% for item in search.results %}
+                        {% if item.object_type == 'product' %}
+                            {% include 'product-card' with product: item %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+
+            {% else %}
+                <h2>{{ 'search.results.empty' | t: searchTerms: search.terms }}</h2>
+            {% endif %}
+        </div>
     {% endif %}
 </div>
