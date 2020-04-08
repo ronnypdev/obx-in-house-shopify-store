@@ -195,18 +195,6 @@ $(document).ready(function () {
         error: ajaxify.onError,
       });
     },
-
-    onLineRemoved: function (event) {
-      let isInMiniCart = lineItem.isInMiniCart(this);
-
-      if (isInMiniCart) {
-        event.preventDefault();
-        let $removeLink = $(this);
-        let $removeQuery = $removeLink.attr('href').split('change?')[1];
-        $.post('/cart/change.js', $removeQuery, ajaxify.onCartUpdated, 'json');
-      }
-    },
-
     onCartUpdated: function () {
       let $miniCartFieldSet = $(
         miniCartContentsSelector + ' .js-cart-fieldset'
@@ -261,14 +249,126 @@ $(document).ready(function () {
 
     init: function () {
       $(document).on('submit', addToCartFormSelector, ajaxify.onAddToCart);
-      $(document).on(
-        'click',
-        '#mini-cart .js-remove-line',
-        ajaxify.onLineRemoved
-      );
       $(document).on('click', '.js-cart-link', ajaxify.onCartButtonClick);
     },
   };
 
   ajaxify.init();
+
+  let quantityButtonSelector = '.js-quantity-button';
+  let quantityFieldSelector = '.js-quantity-field';
+  let quantityPickerSelector = '.js-quantity-picker';
+
+  let quantityPicker = {
+    // onQuantityButtonClick
+    onButtonClick: function (event) {
+      let $button = $(this);
+      let $picker = $button.closest(quantityPickerSelector);
+      let $quantity = $picker.find('.js-quantity-field');
+      let quantityValue = parseInt($quantity.val());
+      let max = $quantity.attr('max') ? parseInt($quantity.attr('max')) : null;
+
+      if (
+        $button.hasClass('plus') &&
+        (max === null || quantityValue + 1 <= max)
+      ) {
+        $quantity.val(quantityValue + 1).change();
+      } else if ($button.hasClass('minus')) {
+        $quantity.val(quantityValue - 1).change();
+      }
+    },
+    // onQuantityFieldChange
+    onChange: function (event) {
+      let $field = $(this);
+      let $picker = $field.closest(quantityPickerSelector);
+      let $quantityText = $picker.find('.js-quantity-text');
+      let shouldDisableMinus =
+        parseInt(this.value) === parseInt($field.attr('min'));
+      let shouldDisablePlus =
+        parseInt(this.value) === parseInt($field.attr('max'));
+      let $minusButton = $picker.find('.js-quantity-button.minus');
+      let $plusButton = $picker.find('.js-quantity-button.plus');
+
+      $quantityText.text(this.value);
+
+      if (shouldDisableMinus) {
+        $minusButton.prop('disabled', true);
+      } else if ($minusButton.prop('disabled') === true) {
+        $minusButton.prop('disabled', false);
+      }
+
+      if (shouldDisablePlus) {
+        $plusButton.prop('disabled', true);
+      } else if ($plusButton.prop('disabled') === true) {
+        $plusButton.prop('disabled', false);
+      }
+    },
+    init: function () {
+      $(document).on(
+        'click',
+        quantityButtonSelector,
+        quantityPicker.onButtonClick
+      );
+      $(document).on('change', quantityFieldSelector, quantityPicker.onChange);
+    },
+  };
+  quantityPicker.init();
+
+  // Line Item
+  let removeLineSelector = '.js-remove-line';
+  let lineQuantitySelector = '.js-line-quantity';
+
+  let lineItem = {
+    isInMiniCart: function (element) {
+      let $element = $(element);
+      let $miniCart = $element.closest(miniCartContentsSelector);
+      let isInMiniCart = $miniCart.length !== 0;
+
+      return isInMiniCart;
+    },
+    onLineQuantityChanged: function (event) {
+      let quantity = this.value;
+      let id = $(this).attr('id').replace('updates_', '');
+
+      let changes = {
+        quantity: quantity,
+        id: id,
+      };
+      let isInMiniCart = lineItem.isInMiniCart(this);
+      if (isInMiniCart) {
+        $.post('/cart/change.js', changes, ajaxify.onCartUpdated, 'json');
+      }
+    },
+    onLineRemoved: function (event) {
+      let isInMiniCart = lineItem.isInMiniCart(this);
+
+      if (isInMiniCart) {
+        event.preventDefault();
+        let $removeLink = $(this);
+        let $removeQuery = $removeLink.attr('href').split('change?')[1];
+        $.post('/cart/change.js', $removeQuery, ajaxify.onCartUpdated, 'json');
+      }
+    },
+    init: function () {
+      $(document).on('click', removeLineSelector, lineItem.onLineRemoved);
+      $(document).on(
+        'change',
+        lineQuantitySelector,
+        lineItem.onLineQuantityChanged
+      );
+    },
+  };
+  lineItem.init();
+
+  let searchInputSelector = '.js-search-input';
+  let searchSubmitSelector = '.js-search-submit';
+  let onsearchInputKeyUp = function (event) {
+    let $form = $(this).closest('form');
+    let $button = $form.find(searchSubmitSelector);
+    let shouldDisableButton = this.value.length === 0;
+
+    $button.prop('disabled', shouldDisableButton);
+  };
+
+  $(document).on('keyup', searchInputSelector, onsearchInputKeyUp);
 });
