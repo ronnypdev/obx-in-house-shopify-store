@@ -22,8 +22,10 @@
   },
   "collection": {
     "sort": {
+      "title": "Sort",
       "price_low_high": "Price, $-$$$",
-      "price_high_low": "Price, $$$-$"
+      "price_high_low": "Price, $$$-$",
+      "clear": "Clear"
     }
   },
   "cart": {
@@ -43,7 +45,8 @@
   },
   "product": {
     "card": {
-      "options_styles": "{{ optionCount }} options / {{ styleCount }} styles"
+      "options_styles_singular": "{{ optionCount }} option / {{ styleCount }} styles",
+      "options_styles_plural": "{{ optionCount }} options / {{ styleCount }} styles"
     },
     "slider": {
       "count": "{{ slideStart }} of {{ slideTotal }}"
