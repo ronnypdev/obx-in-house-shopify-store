@@ -1,11 +1,64 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-<img src="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
-{% for image in product.images %}
-    <a href="{{ image.src | img_url: 'large' }}">
-        <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
-    </a>
-{% endfor %}
-<h1>{{ product.title }}</h1>
-{% include 'add-to-cart-form' %}
-<div>{{ product.description }}</div>
+
+
+<div id="page-product">
+    <div id="product-top">
+        <div class="product-images">
+            {% for image in product.images %}
+                <div class="single-image">
+                    <img src="{{ image.src | img_url: '600x' }}" alt="{{ image.alt | escape }}">
+
+                </div>
+            {% endfor %}
+
+
+            {% if product.images.size > 1 %}
+                <div class="image-counter">
+                    <span class="js-current-slide">
+                        1
+                    </span>
+                    of
+                    {{ product.images.size }}
+                </div>
+            {% endif %}
+        </div><!-- end product images -->
+
+        <div class="product-actions">
+            {% if collection %}
+                <a href="{{ collection.url }}">{{ collection.title }}</a>
+            {% endif %}
+
+            <h1>{{ product.title }}</h1>
+            {% include 'add-to-cart-form' %}
+        </div><!-- end product actions -->
+
+    </div><!-- end Product Top -->
+
+    <div id="product-bottom">
+        <div class="info-section description">
+            <h3>{{ 'product.description.title' | t }}</h3>
+            <div class="product-description">{{ product.description }}</div>
+        </div>
+
+        <div class="shipping-returns">
+            <div class="info-section shipping">
+                <h4>{{ 'product.shipping.title' | t }}</h4>
+                <p>{{ 'product.shipping.content' | t }}</p>
+            </div>
+
+            <div class="info-section returns">
+                <h4>{{ 'product.returns.title' | t }}</h4>
+                <p>{{ 'product.returns.content' | t }}</p>
+            </div>
+        </div>
+
+    </div><!-- end product bottom -->
+
+    {% if collection %}
+        {% include 'product-more'  with collection: collection, limit: 6, exclude: product.handle %}
+    {% endif %}
+
+
+</div>
+<!-- end Page Product -->

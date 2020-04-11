@@ -166,35 +166,7 @@
             {% when 'collection' %}
                 {% assign collection = collections[block.settings.collection] %}
 
-                <div class="collection-block-info">
-                    <h2>
-                        {% if block.settings.title != blank %}
-                            {{ block.settings.title }}
-                        {% else %}
-                            {{ collection.title }}
-                        {% endif %}
-                    </h2>
-                    <p>
-                        {% if block.settings.content != blank %}
-                            {{ block.settings.content }}
-                        {% else %}
-                            {{ collection.description }}
-                        {% endif %}
-                    </p>
-
-                        {% if block.settings.show_button %}
-                            <a href="{{ collection.url }}" class="button">
-                                {% if block.settings.button_text != blank %}
-                                    {{ block.settings.button_text }}
-                                {% else %}
-                                    {{ 'general.shop.shop_now' | t }}
-                                {% endif %}
-                            </a>
-                        {% endif %}
-                </div>
-                {% for product in collection.products limit: block.settings.max_products %}
-                    {% include 'product-card' %}
-                {% endfor %}
+                {% include 'collection-list' with title: block.settings.title, content: block.settings.content, show_button: block.settings.show_button, button_text: block.settings.button_text, max_products: block.settings.max_products %}
                 <!-- end collection blocks info -->
 
                 <!--  text block -->
