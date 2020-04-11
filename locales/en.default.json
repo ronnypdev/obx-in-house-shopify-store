@@ -39,6 +39,7 @@
     "filled": {
       "title": "Your Cart",
       "subtotal": "Subtotal",
+      "update": "Update",
       "button": "Checkout",
       "currency_note_html": "We process all orders in {{ currency }}. While the contents of your cart are currently displayed in <span class=\"js-active-currency\"></span>, the checkout will use {{ currency }} at the current exchange rate."
     }
