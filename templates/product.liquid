@@ -1,6 +1,27 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
+{% assign description = product.description %}
+{% assign shipping = {{ 'product.shipping.content' | t }} %}
+{% assign returns = {{ 'product.returns.content' | t }} %}
+{% if product.description contains '---' %}
+    {% assign description = product.description | split: '---' | first %}
+    {% assign description_array = product.description | split: '---' %}
+
+    {% assign productInfoKeys = 'Shipping|Returns' | split: '|' %}
+
+    {% for key in productInfoKeys %}
+        {% assign split_key = key | prepend: '~*~' | append: '~*~' %}
+        {% if product.description contains split_key %}
+            {% if key == 'Shipping' %}
+                {% assign shipping = product.description | split: split_key | last | split: '---' | first %}
+            {% else if key == 'Returns' %}
+                {% assign returns = product.description | split: split_key | last | split: '---' | first %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
 
 <div id="page-product">
     <div id="product-top">
@@ -38,18 +59,18 @@
     <div id="product-bottom">
         <div class="info-section description">
             <h3>{{ 'product.description.title' | t }}</h3>
-            <div class="product-description">{{ product.description }}</div>
+            <div class="product-description">{{ description }}</div>
         </div>
 
         <div class="shipping-returns">
             <div class="info-section shipping">
                 <h4>{{ 'product.shipping.title' | t }}</h4>
-                <p>{{ 'product.shipping.content' | t }}</p>
+                <p>{{ shipping }}</p>
             </div>
 
             <div class="info-section returns">
                 <h4>{{ 'product.returns.title' | t }}</h4>
-                <p>{{ 'product.returns.content' | t }}</p>
+                <p>{{ returns }}</p>
             </div>
         </div>
 
