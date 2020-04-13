@@ -39,10 +39,10 @@
             {% endif %}
 
 
-            {% if option.name != 'Color' %}
-                {% include 'product-option-row' with option: option, option_name: option_name, type: 'select', selected: selected %}
+            {% if option.name == 'Color' %}
+                {% include 'product-option-row' with option: option, option_name: option_name, selected: selected, force_colors: true %}
             {% else %}
-                {% include 'product-option-row' with option: option, option_name: option_name, selected: selected %}
+                {% include 'product-option-row' with option: option, option_name: option_name, type: 'select', selected: selected %}
             {% endif %}
         {% endfor %}
     {% endif %}
