@@ -53,6 +53,10 @@ a {
   }
 }
 
+.link-logo {
+  font-size: 55px;
+}
+
 .text-link {
   font-family: $text-font;
   color: $text-color;
@@ -105,5 +109,13 @@ button[type='submit'],
     right: 0;
     pointer-events: none;
     font-size: 0.65em;
+  }
+
+  .text-white & {
+    color: $text-color-light-white;
+
+    &:hover {
+      color: $white;
+    }
   }
 }

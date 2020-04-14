@@ -132,6 +132,10 @@ a:hover {
   color: #000000;
 }
 
+.link-logo {
+  font-size: 55px;
+}
+
 .text-link {
   font-family: "Courier New", Courier, monospace;
   color: #555555;
@@ -212,6 +216,12 @@ button[type=submit]:not(:disabled):hover,
   pointer-events: none;
   font-size: 0.65em;
 }
+.text-white .styled-select {
+  color: #aaaaaa;
+}
+.text-white .styled-select:hover {
+  color: #ffffff;
+}
 
 /**
 ====================================
@@ -283,7 +293,10 @@ button[type=submit]:not(:disabled):hover,
   color: #cccccc;
 }
 .text-white a {
-  color: white;
+  color: #ffffff;
+}
+.text-white a:hover {
+  color: #ffffff;
 }
 
 /**
@@ -336,7 +349,7 @@ button[type=submit]:not(:disabled):hover,
   align-items: center;
   justify-content: space-between;
 }
-#header-global .logo {
+#header-global .link-logo {
   font-size: 55px;
   color: #000000;
 }
@@ -380,6 +393,57 @@ button[type=submit]:not(:disabled):hover,
 }
 .cart-link:hover .cart-item-count {
   background-color: #000000;
+}
+
+/**
+====================================
+    ==> Footer Partial <==
+====================================
+*/
+#footer-global {
+  margin-top: 100px;
+}
+#footer-global .footer-image-band {
+  height: 300px;
+  background-image: url('{{ "hero-stitch.jpg" | asset_img_url: "master" }}');
+  background-size: cover;
+}
+#footer-global .footer-inner {
+  width: 100%;
+  height: 100px;
+  background: #000000;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#footer-global .nav-list {
+  display: inline-block;
+}
+#footer-global .nav-list li {
+  display: inline-block;
+}
+#footer-global .nav-list li:not(:first-of-type) {
+  margin-left: 20px;
+}
+#footer-global .nav-list:not(:first-of-type) {
+  margin-left: 20px;
+}
+#footer-global .secondary-menu-list .text-link:not(:hover) {
+  color: #aaaaaa;
+}
+#footer-global .footer-right {
+  margin-top: 18px;
+}
+#footer-global .footer-right > * {
+  display: inline-block;
+}
+#footer-global .footer-right > *:not(:first-child) {
+  margin-left: 20px;
+}
+.template-index #footer-global, .template-404 #footer-global, .template-product #footer-global, .template-search #footer-global {
+  margin-top: 0;
 }
 
 #mini-cart {

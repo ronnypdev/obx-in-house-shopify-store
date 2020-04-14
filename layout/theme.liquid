@@ -1,39 +1,42 @@
 <!doctype html>
 <html>
-    <head>
-        <title>{{ page_title }}</title>
-        <meta charset="utf-8">
-        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-        <meta name="description" content="{{ page_description | escape }}">
-        <link rel="canonical" href="{{ canonical_url }}">
-        <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
-        {{ content_for_header }}
-        <!-- Header hook for plugins -->
-        {{ 'application.css' | asset_url | stylesheet_tag }}
-    </head>
-    <body>
 
-        {% include 'header' %}
+<head>
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
+    {{ content_for_header }}
+    <!-- Header hook for plugins -->
+    {{ 'application.css' | asset_url | stylesheet_tag }}
+</head>
 
-        {% if template != 'cart' %}
-            {% include 'mini-cart' %}
-        {% endif %}
+<body class="template-{{ template }}">
 
-        <main role="main">
-            {{ content_for_layout }}
-            {% include 'footer' %}
-        </main>
+    {% include 'header' %}
 
-        {{ 'jquery-3.3.1.min.js' | asset_url | script_tag }}
-        {% if settings.show_multiple_currencies %}
-            {{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
-            {{ "jquery.currencies.min.js" | asset_url | script_tag }}
-        {% endif %}
+    {% if template != 'cart' %}
+    {% include 'mini-cart' %}
+    {% endif %}
 
-        {% include 'currencies' %}
+    <main role="main">
+        {{ content_for_layout }}
+        {% include 'footer' %}
+    </main>
 
-        {{ 'application.js' | asset_url | script_tag }}
+    {{ 'jquery-3.3.1.min.js' | asset_url | script_tag }}
+    {% if settings.show_multiple_currencies %}
+    {{ "//cdn.shopify.com/s/javascripts/currencies.js" | script_tag }}
+    {{ "jquery.currencies.min.js" | asset_url | script_tag }}
+    {% endif %}
+
+    {% include 'currencies' %}
+
+    {{ 'application.js' | asset_url | script_tag }}
 
 
-    </body>
+</body>
+
 </html>

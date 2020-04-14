@@ -75,6 +75,9 @@
   }
 
   a {
-    color: white;
+    color: $white;
+    &:hover {
+      color: $white;
+    }
   }
 }
