@@ -18,13 +18,13 @@ h3,
 h1,
 .h1 {
   font-size: $type-headline-lg;
-  line-height: $line-global * 3;
+  line-height: $line-global * 2;
 }
 
 h2,
 .h2 {
   font-size: $type-headline-med;
-  line-height: $line-global * 2;
+  line-height: $line-global;
 }
 
 h3,
@@ -44,7 +44,22 @@ h5,
 h6,
 .h6 {
 }
+
+a {
+  text-decoration: none;
+  color: $text-color;
+  &:hover {
+    color: $black;
+  }
+}
+
 .text-link {
+  font-family: $text-font;
+  color: $text-color;
+  fill: currentColor;
+  &:hover {
+    color: $black;
+  }
 }
 
 button[type='submit'],
@@ -67,5 +82,28 @@ button[type='submit'],
 
   &:not(:disabled):hover {
     background: darken($black, 10%);
+  }
+}
+
+.styled-select {
+  position: relative;
+  color: $text-color;
+
+  select {
+    @include reset-input;
+    font-family: $text-font;
+    font-size: $type-body-med;
+    line-height: $line-global;
+    color: currentColor;
+    padding-right: $line-global;
+    width: 100%;
+  }
+
+  .inline-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    font-size: 0.65em;
   }
 }

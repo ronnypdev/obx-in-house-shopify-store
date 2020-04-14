@@ -30,7 +30,7 @@
   },
   "cart": {
     "button": {
-      "count_html": "Cart (<span class=\"js-cart-item-count\">{{ itemCount }}</span>)"
+      "count_html": "Cart <span class=\"cart-item-count js-cart-item-count\">{{ itemCount }}</span>"
     },
     "empty": {
       "title": "Your cart is empty",
