@@ -1,0 +1,40 @@
+/**
+====================================
+    ==> Variables Partial <==
+====================================
+*/
+$headline-font: 'Georgia', 'Times New Roman', Times, serif;
+$text-font: 'Courier New', Courier, monospace;
+
+$black: #000000;
+$white: #ffffff;
+
+$light-black: #333333;
+
+$text-color: #555555;
+$text-color-white: #cccccc;
+$text-color-light: #707070;
+$text-color-light-white: #aaaaaa;
+
+$border-color: rgba(0, 0, 0, 0.5);
+$border-color-white: rgba(255, 255, 255, 0.15);
+
+$standard-border: 1px solid $border-color;
+$standard-border-white: 1px solid $border-color-white;
+
+$line-global: 20px;
+$gutter-global: $line-global * 2;
+$offset-global: $gutter-global; // 40px
+
+$header-height: 100px; // 80px
+
+$type-headline-lg: 40px;
+$type-headline-med: 20px;
+$type-headline-sm: 15px;
+$type-body-lg: 31px;
+$type-body-med: 13px;
+
+$type-bold: 700;
+$type-book: 400;
+
+$button-height: $line-global * 2;

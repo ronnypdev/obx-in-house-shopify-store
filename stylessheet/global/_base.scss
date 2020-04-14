@@ -1,0 +1,27 @@
+/**
+====================================
+    ==> Base Partial <==
+====================================
+*/
+* {
+  font-family: $text-font;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: $black;
+  line-height: $line-global;
+}
+
+body {
+  font-size: $type-body-med;
+  background-color: $white;
+  background-size: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  //   padding-top: $header-height + $offset-global;
+}

@@ -1,0 +1,71 @@
+/**
+====================================
+    ==> Styleguide Partial <==
+====================================
+*/
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  font-family: $headline-font;
+  font-weight: $type-bold;
+  color: $light-black;
+}
+
+h1,
+.h1 {
+  font-size: $type-headline-lg;
+  line-height: $line-global * 3;
+}
+
+h2,
+.h2 {
+  font-size: $type-headline-med;
+  line-height: $line-global * 2;
+}
+
+h3,
+.h3 {
+  font-size: $type-body-med;
+  line-height: $line-global;
+}
+
+h4,
+.h4 {
+}
+
+h5,
+.h5 {
+}
+
+h6,
+.h6 {
+}
+.text-link {
+}
+
+button[type='submit'],
+.button {
+  @include reset-input;
+  display: inline-block;
+  width: 100%;
+  padding: $line-global;
+  text-align: center;
+  font-size: $type-body-med;
+  line-height: $line-global;
+  background: $black;
+  color: $white;
+
+  &:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+    text-decoration: line-through;
+  }
+
+  &:not(:disabled):hover {
+    background: darken($black, 10%);
+  }
+}
