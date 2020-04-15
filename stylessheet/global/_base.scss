@@ -23,5 +23,10 @@ body {
   background-size: 100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  padding-top: $header-height + $offset-global;
+  padding-top: $header-height;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

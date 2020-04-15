@@ -87,7 +87,12 @@ body {
   background-size: 100%;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  padding-top: 140px;
+  padding-top: 100px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /**
@@ -455,4 +460,45 @@ html.mini-cart-open #mini-cart {
 }
 html.mini-cart-open main {
   opacity: 0.3;
+}
+
+/**
+====================================
+    ==> Collection Partial <==
+====================================
+*/
+#page-collection #collection-image {
+  height: 33vh;
+  min-height: 250px;
+  max-height: 800px;
+}
+#page-collection #collection-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#page-collection .collection-content {
+  padding-top: 40px;
+  grid-template-columns: repeat(12, 1fr);
+}
+#page-collection .collection-sidebar {
+  grid-column: span 2;
+  grid-row: 1;
+}
+#page-collection .product-card:nth-of-type(odd) {
+  grid-column: 3/7;
+}
+#page-collection .product-card:nth-of-type(even) {
+  grid-column: 7/11;
+}
+#page-collection .product-card:nth-of-type(1), #page-collection .product-card:nth-of-type(2) {
+  grid-row: 1;
+}
+#page-collection .collection-description {
+  margin-top: 20px;
+}
+#page-collection .collection-sorting {
+  margin-top: 40px;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  padding-top: 40px;
 }
