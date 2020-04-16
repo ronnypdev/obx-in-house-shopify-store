@@ -1,0 +1,24 @@
+//Global Styles
+@import './global/reset';
+@import './global/variables';
+@import './global/functions';
+@import './global/mixins';
+@import './global/base';
+@import './global/styleguide';
+@import './global/layout';
+@import './global/utils';
+
+//snippets
+@import './snippets/inline-icon';
+@import './snippets/header';
+@import './snippets/footer';
+@import './snippets/mini-cart';
+@import './snippets/option-color';
+@import './snippets/product-card';
+
+// Sections
+// @import './sections/'
+
+// Templates
+@import './templates/collections';
+@import './templates/product';

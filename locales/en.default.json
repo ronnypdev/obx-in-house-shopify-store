@@ -22,13 +22,15 @@
   },
   "collection": {
     "sort": {
+      "title": "Sort",
       "price_low_high": "Price, $-$$$",
-      "price_high_low": "Price, $$$-$"
+      "price_high_low": "Price, $$$-$",
+      "clear": "Clear"
     }
   },
   "cart": {
     "button": {
-      "count_html": "Cart (<span class=\"js-cart-item-count\">{{ itemCount }}</span>)"
+      "count_html": "Cart <span class=\"cart-item-count js-cart-item-count\">{{ itemCount }}</span>"
     },
     "empty": {
       "title": "Your cart is empty",
@@ -37,16 +39,21 @@
     "filled": {
       "title": "Your Cart",
       "subtotal": "Subtotal",
+      "update": "Update",
       "button": "Checkout",
       "currency_note_html": "We process all orders in {{ currency }}. While the contents of your cart are currently displayed in <span class=\"js-active-currency\"></span>, the checkout will use {{ currency }} at the current exchange rate."
     }
   },
   "product": {
     "card": {
-      "options_styles": "{{ optionCount }} options / {{ styleCount }} styles"
+      "options_styles_singular": "{{ optionCount }} option / {{ styleCount }} styles",
+      "options_styles_plural": "{{ optionCount }} options / {{ styleCount }} styles"
     },
     "slider": {
       "count": "{{ slideStart }} of {{ slideTotal }}"
+    },
+    "description": {
+      "title": "Information"
     },
     "shipping": {
       "title": "Shipping",
@@ -60,6 +67,14 @@
       "submit": "Add to Cart",
       "quantity": "Quantity",
       "sold_out": "Sold Out"
+    },
+    "more": {
+      "vendor": "by {{ vendor }}"
+    },
+    "colors": {
+      "white": "FFFFFF",
+      "black": "000000",
+      "raw": "707070"
     }
   },
   "search": {

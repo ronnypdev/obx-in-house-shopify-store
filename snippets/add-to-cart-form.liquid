@@ -39,19 +39,20 @@
             {% endif %}
 
 
-            {% if option.name != 'Color' %}
-                {% include 'product-option-row' with option: option, option_name: option_name, type: 'select', selected: selected %}
+            {% if option.name == 'Color' %}
+                {% include 'product-option-row' with option: option, option_name: option_name, selected: selected, force_colors: true %}
             {% else %}
-                {% include 'product-option-row' with option: option, option_name: option_name, selected: selected %}
+                {% include 'product-option-row' with option: option, option_name: option_name, type: 'select', selected: selected %}
             {% endif %}
         {% endfor %}
     {% endif %}
 
     <input class="js-variant-id" type="hidden" name="id" value="{% if has_selected_variant %}{{ product.selected_variant.id }}{% elsif has_multiple_variants != true %}{{ product.variants.first.id }}{% endif %}">
 
-    <span class="js-price" data-default-price="{{ product.prize | money }}">{{ current_variant.price | money }}</span>
 
-    <label for="Quantity">quantity</label>
-    <input id="Quantity" min="1" name="quantity" type="number" value="1">
-    <button id="add-to-cart-button" name="add" type="submit" {% if can_add_to_cart != true %} disabled {% endif %}>Add to cart</button>
+    <button id="add-to-cart-button" class="button-cta" name="add" type="submit" {% if can_add_to_cart != true %} disabled {% endif %}>
+        {{ 'product.form.submit' | t }}
+        &ndash;
+        <span class="js-price" data-default-price="{{ product.prize | money }}">{{ current_variant.price | money }}</span>
+    </button>
 </form>
