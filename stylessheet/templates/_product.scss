@@ -1,0 +1,80 @@
+#page-product {
+  #product-top {
+    background: $light-white;
+    padding-top: $line-global * 3;
+    padding-bottom: $line-global * 2;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+  }
+
+  .product-images {
+    grid-column: 3/6;
+  }
+
+  .single-image:not(:first-of-type) {
+    display: none;
+  }
+
+  .image-counter {
+    text-align: center;
+    margin-top: $line-global;
+    color: $text-color;
+  }
+
+  .product-actions {
+    grid-column: 7/11;
+  }
+
+  .product-title {
+    margin-top: $line-global;
+  }
+
+  #add-to-cart-form {
+    margin-top: $line-global * 2;
+  }
+
+  .product-option-row {
+    padding: $line-global 0;
+    border-top: $standard-border;
+    @include flex-space-between;
+    &:last-of-type {
+      border-bottom: $standard-border;
+    }
+  }
+
+  .styled-select {
+    select {
+      text-align-last: right;
+      &:not(:hover) {
+        color: $light-black;
+      }
+    }
+  }
+
+  .variant-radio {
+    @extend .visually-hidden;
+
+    & + label {
+      display: inline-block;
+      cursor: pointer;
+      color: $text-color;
+    }
+    &:checked + label {
+      color: $black;
+    }
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &:not(:first-of-type) {
+      & + label {
+        margin-left: $line-global/4;
+      }
+    }
+  }
+
+  #add-to-cart-button {
+    margin-top: $line-global;
+  }
+}

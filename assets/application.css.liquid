@@ -97,7 +97,7 @@ img {
 
 /**
 ====================================
-    ==> Styleguide Partial <==
+    ==> Style guide Partial <==
 ====================================
 */
 h1,
@@ -169,7 +169,7 @@ button[type=submit],
   text-align: left;
   display: inline-block;
   width: 100%;
-  padding: 20px;
+  padding: 10px 20px;
   text-align: center;
   font-size: 13px;
   line-height: 20px;
@@ -185,6 +185,10 @@ button[type=submit]:disabled,
 button[type=submit]:not(:disabled):hover,
 .button:not(:disabled):hover {
   background: black;
+}
+button[type=submit].button-cta,
+.button.button-cta {
+  padding: 20px;
 }
 
 .styled-select {
@@ -233,7 +237,7 @@ button[type=submit]:not(:disabled):hover,
     ==> Utilities Partial <==
 ====================================
 */
-.visually-hidden {
+.visually-hidden, #page-product .variant-radio {
   position: absolute !important;
   height: 1px;
   width: 1px;
@@ -464,6 +468,50 @@ html.mini-cart-open main {
 
 /**
 ====================================
+    ==> Option Color Partial <==
+====================================
+*/
+.option-color {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+.option-color .option-color-inner,
+.option-color .color-swatch {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.option-color .option-color-inner:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  border: 1px solid #707070;
+  pointer-events: none;
+  border-radius: 100%;
+  opacity: 0;
+}
+.option-color .color-swatch {
+  border-radius: 100%;
+}
+.option-color.color-white .color-swatch {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+input[type=radio]:not(:checked):hover + label .option-color .option-color-inner:after {
+  opacity: 1;
+}
+input[type=radio]:checked + label .option-color .option-color-inner:after {
+  opacity: 1;
+  border-color: #333333;
+}
+
+/**
+====================================
     ==> Product Card Partial <==
 ====================================
 */
@@ -524,4 +572,67 @@ html.mini-cart-open main {
   margin-top: 40px;
   border-top: 1px solid rgba(0, 0, 0, 0.5);
   padding-top: 40px;
+}
+
+#page-product #product-top {
+  background: #fafafa;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+}
+#page-product .product-images {
+  grid-column: 3/6;
+}
+#page-product .single-image:not(:first-of-type) {
+  display: none;
+}
+#page-product .image-counter {
+  text-align: center;
+  margin-top: 20px;
+  color: #555555;
+}
+#page-product .product-actions {
+  grid-column: 7/11;
+}
+#page-product .product-title {
+  margin-top: 20px;
+}
+#page-product #add-to-cart-form {
+  margin-top: 40px;
+}
+#page-product .product-option-row {
+  padding: 20px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#page-product .product-option-row:last-of-type {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+#page-product .styled-select select {
+  text-align-last: right;
+}
+#page-product .styled-select select:not(:hover) {
+  color: #333333;
+}
+#page-product .variant-radio + label {
+  display: inline-block;
+  cursor: pointer;
+  color: #555555;
+}
+#page-product .variant-radio:checked + label {
+  color: #000000;
+}
+#page-product .variant-radio:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+#page-product .variant-radio:not(:first-of-type) + label {
+  margin-left: 5px;
+}
+#page-product #add-to-cart-button {
+  margin-top: 20px;
 }

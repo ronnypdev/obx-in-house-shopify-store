@@ -4,13 +4,11 @@
 
 
 {% unless color_hex contains 'translation missing' %}
-    <span class="option-color">
+    <span class="option-color color-{{ value_handle }}">
         <span class="option-color-inner">
-            <span class="option-color-wrap">
-                <span class="color-swatch" style="background-color: {{ color_hex | prepend: '#' }}; display: block; width: 10px; height: 10px;"></span>
-                <span class="visually-hidden">
-                    {{ value }}
-                </span>
+            <span class="color-swatch" style="background-color: {{ color_hex | prepend: '#' }};"></span>
+            <span class="visually-hidden">
+                {{ value }}
             </span>
         </span>
     </span>

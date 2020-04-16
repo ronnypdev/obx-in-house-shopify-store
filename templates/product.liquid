@@ -24,7 +24,8 @@
 
 
 <div id="page-product">
-    <div id="product-top">
+
+    <div class="wrapper grid" id="product-top">
         <div class="product-images">
             {% for image in product.images %}
                 <div class="single-image">
@@ -50,7 +51,7 @@
                 <a href="{{ collection.url }}">{{ collection.title }}</a>
             {% endif %}
 
-            <h1>{{ product.title }}</h1>
+            <h1 class="product-title">{{ product.title }}</h1>
             {% include 'add-to-cart-form' %}
         </div><!-- end product actions -->
 

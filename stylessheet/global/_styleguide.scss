@@ -1,6 +1,6 @@
 /**
 ====================================
-    ==> Styleguide Partial <==
+    ==> Style guide Partial <==
 ====================================
 */
 
@@ -71,7 +71,7 @@ button[type='submit'],
   @include reset-input;
   display: inline-block;
   width: 100%;
-  padding: $line-global;
+  padding: ($line-global / 2) $line-global;
   text-align: center;
   font-size: $type-body-med;
   line-height: $line-global;
@@ -86,6 +86,10 @@ button[type='submit'],
 
   &:not(:disabled):hover {
     background: darken($black, 10%);
+  }
+
+  &.button-cta {
+    padding: $line-global;
   }
 }
 
