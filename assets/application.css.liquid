@@ -129,6 +129,18 @@ h3,
   line-height: 20px;
 }
 
+p {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.p-large, #page-product .description p {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 31px;
+  line-height: 40px;
+}
+
 a {
   text-decoration: none;
   color: #555555;
@@ -635,4 +647,28 @@ input[type=radio]:checked + label .option-color .option-color-inner:after {
 }
 #page-product #add-to-cart-button {
   margin-top: 20px;
+}
+#page-product #product-bottom {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-row: 100px;
+}
+#page-product .info-section h3 {
+  margin-bottom: 20px;
+}
+#page-product .description {
+  grid-column: 3/11;
+}
+#page-product .shipping h3,
+#page-product .returns h3 {
+  color: #555555;
+}
+#page-product .shipping {
+  grid-column: 3/7;
+  grid-row: 2;
+}
+#page-product .returns {
+  grid-column: 7/11;
+  grid-row: 2;
 }

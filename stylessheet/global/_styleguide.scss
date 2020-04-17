@@ -45,6 +45,18 @@ h6,
 .h6 {
 }
 
+p {
+  font-family: $text-font;
+  font-size: $type-body-med;
+  line-height: $line-global;
+}
+
+.p-large {
+  font-family: $text-font;
+  font-size: $type-body-lg;
+  line-height: $line-global * 2;
+}
+
 a {
   text-decoration: none;
   color: $text-color;

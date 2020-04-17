@@ -57,23 +57,23 @@
 
     </div><!-- end Product Top -->
 
-    <div id="product-bottom">
+    <div class="wrapper grid" id="product-bottom">
         <div class="info-section description">
             <h3>{{ 'product.description.title' | t }}</h3>
-            <div class="product-description">{{ description }}</div>
+            <p class="product-description">{{ description }}</p>
         </div>
 
-        <div class="shipping-returns">
-            <div class="info-section shipping">
-                <h4>{{ 'product.shipping.title' | t }}</h4>
-                <p>{{ shipping }}</p>
-            </div>
 
-            <div class="info-section returns">
-                <h4>{{ 'product.returns.title' | t }}</h4>
-                <p>{{ returns }}</p>
-            </div>
+        <div class="info-section shipping">
+            <h3>{{ 'product.shipping.title' | t }}</h3>
+            <p>{{ shipping }}</p>
         </div>
+
+        <div class="info-section returns">
+            <h3>{{ 'product.returns.title' | t }}</h3>
+            <p>{{ returns }}</p>
+        </div>
+
 
     </div><!-- end product bottom -->
 
