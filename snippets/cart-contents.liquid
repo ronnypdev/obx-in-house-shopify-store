@@ -1,28 +1,33 @@
-{% if cart.item_count > 0 %}
-    <form action="/cart" method="post" novalidate>
-        <fieldset class="js-cart-fieldset" id="cart-fieldset">
-            <div class="cart-lines">
-                {% for item in cart.items %}
-                    {% include 'line-item' %}
-                {% endfor %}
-            </div>
-
-
-            <div class="cart-totals">
-                <div class="subtotal-lines">
-                    <p>{{ 'cart.filled.subtotal' | t }}</p>
-                    <span class="price">{{ cart.total_price | money }}</span>
+<div class="cart-contents">
+    {% if cart.item_count > 0 %}
+        <form action="/cart" method="post" novalidate>
+            <fieldset class="js-cart-fieldset" id="cart-fieldset">
+                <div class="cart-lines">
+                    {% for item in cart.items %}
+                        {% include 'line-item' %}
+                    {% endfor %}
                 </div>
-                <button name="update" type="submit">{{ 'cart.filled.update' | t }}</button>
-                <button name="checkout" type="submit">{{ 'cart.filled.button' | t }}</button>
-            </div>
 
-            <p class="js-cart-currency-note">
-                {{ 'cart.filled.currency_note_html' | t: currency: shop.currency }}
-            </p>
-        </fieldset>
-    </form>
-{% else %}
-    <p class="cart-empty-text ta-center">{{ 'cart.empty.title' | t }}</p>
-    <a class="button js-keep-shopping" href="/">{{ 'cart.empty.button' | t }}</a>
-{% endif %}
+
+                <div class="cart-totals">
+                    <div class="subtotal-lines">
+                        <h3>{{ 'cart.filled.subtotal' | t }}</h3>
+                        <span class="price">{{ cart.total_price | money }}</span>
+                    </div>
+                    <div class="cart-buttons">
+                        <button class="update-button" name="update" type="submit">{{ 'cart.filled.update' | t }}</button>
+                        <button class="button-cta" name="checkout" type="submit">{{ 'cart.filled.button' | t }}</button>
+                    </div>
+
+                </div>
+
+                <p class="currency-note js-cart-currency-note">
+                    {{ 'cart.filled.currency_note_html' | t: currency: shop.currency }}
+                </p>
+            </fieldset>
+        </form>
+    {% else %}
+        <p class="cart-empty-text ta-center">{{ 'cart.empty.title' | t }}</p>
+        <a class="button js-keep-shopping" href="/">{{ 'cart.empty.button' | t }}</a>
+    {% endif %}
+</div>

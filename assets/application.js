@@ -84,7 +84,7 @@ $(document).ready(function () {
         currencyPickerSelector,
         currencyPicker.onCurrencyChanged
       );
-    }
+    },
   };
 
   currencyPicker.init();
@@ -109,7 +109,7 @@ $(document).ready(function () {
       let formOptions = {
         option1: null,
         option2: null,
-        option3: null
+        option3: null,
       };
 
       selectedVariant = null;
@@ -176,7 +176,7 @@ $(document).ready(function () {
         addToCartFormSelector,
         productForm.validate
       );
-    }
+    },
   };
 
   productForm.init();
@@ -192,7 +192,7 @@ $(document).ready(function () {
         data: $(this).serialize(),
         dataType: 'json',
         success: ajaxify.onCartUpdated,
-        error: ajaxify.onError
+        error: ajaxify.onError,
       });
     },
     onCartUpdated: function () {
@@ -220,7 +220,7 @@ $(document).ready(function () {
           } else {
             ajaxify.closeCart();
           }
-        }
+        },
       });
     },
     onError: function (XMLHttpRequest, textStatus) {
@@ -229,14 +229,16 @@ $(document).ready(function () {
     },
 
     onCartButtonClick: function (event) {
-      event.preventDefault();
-
       let isCartOpen = $('html').hasClass('mini-cart-open');
+      let isInCart = window.location.href.indexOf('/cart') !== 1;
 
-      if (!isCartOpen) {
-        ajaxify.openCart();
-      } else {
-        ajaxify.closeCart();
+      if (!isInCart) {
+        event.preventDefault();
+        if (!isCartOpen) {
+          ajaxify.openCart();
+        } else {
+          ajaxify.closeCart();
+        }
       }
     },
 
@@ -249,8 +251,12 @@ $(document).ready(function () {
 
     init: function () {
       $(document).on('submit', addToCartFormSelector, ajaxify.onAddToCart);
-      $(document).on('click', '.js-cart-link', ajaxify.onCartButtonClick);
-    }
+      $(document).on(
+        'click',
+        '.js-cart-link, .js-keep-shopping',
+        ajaxify.onCartButtonClick
+      );
+    },
   };
 
   ajaxify.init();
@@ -310,7 +316,7 @@ $(document).ready(function () {
         quantityPicker.onButtonClick
       );
       $(document).on('change', quantityFieldSelector, quantityPicker.onChange);
-    }
+    },
   };
   quantityPicker.init();
 
@@ -332,7 +338,7 @@ $(document).ready(function () {
 
       let changes = {
         quantity: quantity,
-        id: id
+        id: id,
       };
       let isInMiniCart = lineItem.isInMiniCart(this);
       if (isInMiniCart) {
@@ -356,7 +362,7 @@ $(document).ready(function () {
         lineQuantitySelector,
         lineItem.onLineQuantityChanged
       );
-    }
+    },
   };
   lineItem.init();
 

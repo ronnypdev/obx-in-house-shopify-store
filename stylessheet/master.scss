@@ -12,6 +12,9 @@
 @import './snippets/inline-icon';
 @import './snippets/header';
 @import './snippets/footer';
+@import './snippets/quantity-picker';
+@import './snippets/line-item';
+@import './snippets/cart-contents';
 @import './snippets/mini-cart';
 @import './snippets/option-color';
 @import './snippets/product-card';
@@ -24,3 +27,4 @@
 // Templates
 @import './templates/collections';
 @import './templates/product';
+@import './templates/cart';
