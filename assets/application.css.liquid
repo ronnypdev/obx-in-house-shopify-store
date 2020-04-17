@@ -196,7 +196,11 @@ button[type=submit]:disabled,
 }
 button[type=submit]:not(:disabled):hover,
 .button:not(:disabled):hover {
-  background: black;
+  background: #1a1a1a;
+}
+button[type=submit]:hover,
+.button:hover {
+  color: #ffffff;
 }
 button[type=submit].button-cta,
 .button.button-cta {
@@ -263,16 +267,16 @@ button[type=submit].button-cta,
   padding-right: 40px;
 }
 
-.grid {
+.grid, .collection-list {
   display: grid;
   grid-column-gap: 40px;
   grid-row-gap: 40px;
 }
-.grid > * {
+.grid > *, .collection-list > * {
   min-width: 0;
   min-height: 0;
 }
-.grid.collapse {
+.grid.collapse, .collapse.collection-list {
   grid-column-gap: 0;
   grid-row-gap: 0;
 }
@@ -543,6 +547,60 @@ input[type=radio]:checked + label .option-color .option-color-inner:after {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+/**
+====================================
+    ==> Collection List Partial <==
+====================================
+*/
+.collection-list {
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+}
+.collection-list aside {
+  grid-column: span 2;
+  grid-row: 1;
+}
+.collection-list .product-card:nth-of-type(odd) {
+  grid-column: 3/7;
+}
+.collection-list .product-card:nth-of-type(even) {
+  grid-column: 7/11;
+}
+.collection-list .product-card:nth-of-type(1), .collection-list .product-card:nth-of-type(2) {
+  grid-row: 1;
+}
+
+/**
+====================================
+    ==> Product Partial <==
+====================================
+*/
+.product-more .collection-title-tag {
+  width: calc(100% - 40px);
+  max-width: 427px;
+  margin-left: 40px;
+  background-color: #fafafa;
+  padding: 20px;
+}
+.product-more .collection-content {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #fafafa;
+}
+.product-more .collection-list {
+  grid-template-columns: 16.66vw repeat(5, 33.33vw) 16.66vw;
+}
+.product-more .collection-list > *:last-child {
+  padding-right: 40px;
+}
+.product-more .collection-list .product-card,
+.product-more .collection-list aside {
+  grid-column: auto;
+  grid-row: 1;
 }
 
 /**

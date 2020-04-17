@@ -97,7 +97,11 @@ button[type='submit'],
   }
 
   &:not(:disabled):hover {
-    background: darken($black, 10%);
+    background: lighten($black, 10%);
+  }
+
+  &:hover {
+    color: $white;
   }
 
   &.button-cta {
