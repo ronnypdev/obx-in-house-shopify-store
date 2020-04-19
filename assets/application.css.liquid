@@ -138,7 +138,7 @@ p, .quantity-picker button {
   line-height: 20px;
 }
 
-.p-large, #page-product .description p, #page-product .description .quantity-picker button, .quantity-picker #page-product .description button {
+.p-large, #page-product .description p, #page-product .description .quantity-picker button, .quantity-picker #page-product .description button, .search-form #search-term {
   font-family: "Courier New", Courier, monospace;
   font-size: 31px;
   line-height: 40px;
@@ -154,6 +154,8 @@ a:hover {
 
 .link-logo {
   font-size: 55px;
+  display: inline-block;
+  width: 55px;
 }
 
 .text-link {
@@ -183,7 +185,7 @@ button[type=submit],
   -moz-osx-font-smoothing: inherit;
   text-align: left;
   display: inline-block;
-  width: 100%;
+  width: auto;
   padding: 10px 20px;
   text-align: center;
   font-size: 13px;
@@ -207,6 +209,7 @@ button[type=submit]:hover,
 }
 button[type=submit].button-cta,
 .button.button-cta {
+  width: 100%;
   padding: 20px;
 }
 
@@ -751,6 +754,69 @@ input[type=radio]:checked + label .option-color .option-color-inner:after {
 
 /**
 ====================================
+    ==> Search Form Partial <==
+====================================
+*/
+.search-form {
+  position: relative;
+}
+.search-form #search-term {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  text-align: left;
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  color: #000000;
+}
+.search-form #search-term:focus {
+  border-bottom-color: #000000;
+}
+.search-form button {
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+  width: auto;
+}
+
+/**
+====================================
+    ==> Style guide Partial <==
+====================================
+*/
+#error-404 {
+  height: calc(100vh - 100px);
+  background-color: #fafafa;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  align-items: center;
+}
+#error-404 .search-form {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 40px;
+  margin-bottom: auto;
+}
+#error-404 .button {
+  margin-bottom: 0;
+}
+
+/**
+====================================
     ==> Collection Partial <==
 ====================================
 */
@@ -886,4 +952,32 @@ input[type=radio]:checked + label .option-color .option-color-inner:after {
   max-width: 500px;
   width: 100%;
   margin: 40px auto 0;
+}
+
+/**
+====================================
+    ==> Search Form Partial <==
+====================================
+*/
+#page-search #search-form-wrap {
+  grid-template-columns: repeat(12, 1fr);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: calc(100vh - 100px);
+  background: #fafafa;
+  align-items: center;
+}
+#page-search .search-form,
+#page-search .results-inner {
+  grid-column: 3/11;
+}
+#page-search #search-results {
+  margin-top: 40px;
+  grid-template-columns: repeat(12, 1fr);
+}
+#page-search .results-grid {
+  margin-top: 40px;
+}
+#page-search.search-performed #search-form-wrap {
+  max-height: 600px;
 }

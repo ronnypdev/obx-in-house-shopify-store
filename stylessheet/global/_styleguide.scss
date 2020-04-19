@@ -67,6 +67,8 @@ a {
 
 .link-logo {
   font-size: 55px;
+  display: inline-block;
+  width: 55px;
 }
 
 .text-link {
@@ -82,7 +84,7 @@ button[type='submit'],
 .button {
   @include reset-input;
   display: inline-block;
-  width: 100%;
+  width: auto;
   padding: ($line-global / 2) $line-global;
   text-align: center;
   font-size: $type-body-med;
@@ -105,6 +107,7 @@ button[type='submit'],
   }
 
   &.button-cta {
+    width: 100%;
     padding: $line-global;
   }
 }
