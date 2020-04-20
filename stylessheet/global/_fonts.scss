@@ -1,0 +1,49 @@
+/* noto-serif-regular - latin */
+@font-face {
+  font-family: 'Noto Serif';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url('noto-serif-v8-latin-regular', 'eot'),
+    font-url('noto-serif-v8-latin-regular', 'eot'),
+    font-url('noto-serif-v8-latin-regular', 'woff2'),
+    font-url('noto-serif-v8-latin-regular', 'woff'),
+    font-url('noto-serif-v8-latin-regular', 'ttf'),
+    font-url('noto-serif-v8-latin-regular', 'svg#NotoSerif');
+}
+/* noto-serif-700 - latin */
+@font-face {
+  font-family: 'Noto Serif';
+  font-style: normal;
+  font-weight: 700;
+  src: font-url('noto-serif-v8-latin-700', 'eot'),
+    font-url('noto-serif-v8-latin-700', 'eot'),
+    font-url('noto-serif-v8-latin-700', 'woff2'),
+    font-url('noto-serif-v8-latin-700', 'woff'),
+    font-url('noto-serif-v8-latin-700', 'ttf'),
+    font-url('noto-serif-v8-latin-700', 'svg#NotoSerif');
+}
+
+/* ibm-plex-mono-regular - latin */
+@font-face {
+  font-family: 'Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: font-url('ibm-plex-mono-v5-latin-regular', 'eot'),
+    font-url('ibm-plex-mono-v5-latin-regular', 'eot'),
+    font-url('ibm-plex-mono-v5-latin-regular', 'woff2'),
+    font-url('ibm-plex-mono-v5-latin-regular', 'woff'),
+    font-url('ibm-plex-mono-v5-latin-regular', 'ttf'),
+    font-url('ibm-plex-mono-v5-latin-regular', 'svg#NotoSerif');
+}
+/* ibm-plex-mono-700 - latin */
+@font-face {
+  font-family: 'Plex Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: font-url('ibm-plex-mono-v5-latin-700', 'eot'),
+    font-url('ibm-plex-mono-v5-latin-700', 'eot'),
+    font-url('ibm-plex-mono-v5-latin-700', 'woff2'),
+    font-url('ibm-plex-mono-v5-latin-700', 'woff'),
+    font-url('ibm-plex-mono-v5-latin-700', 'ttf'),
+    font-url('ibm-plex-mono-v5-latin-700', 'svg#NotoSerif');
+}

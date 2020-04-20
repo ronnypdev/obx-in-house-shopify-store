@@ -26,16 +26,20 @@
 <div id="page-product">
 
     <div class="wrapper grid" id="product-top">
-        <div class="product-images">
-            {% for image in product.images %}
-                <div class="single-image">
-                    <img src="{{ image.src | img_url: '600x' }}" alt="{{ image.alt | escape }}">
+        <div class="product-images js-product-slideshow">
+            <div class="slides js-slides">
+                {% for image in product.images %}
+                    <div class="single-image">
+                        <img src="{{ image.src | img_url: '600x' }}" alt="{{ image.alt | escape }}">
 
-                </div>
-            {% endfor %}
-
+                    </div>
+                {% endfor %}
+            </div><!-- end image slides -->
 
             {% if product.images.size > 1 %}
+
+                {% include 'slider-buttons' %}
+
                 <div class="image-counter">
                     <span class="js-current-slide">
                         1
@@ -57,23 +61,23 @@
 
     </div><!-- end Product Top -->
 
-    <div id="product-bottom">
+    <div class="wrapper grid" id="product-bottom">
         <div class="info-section description">
             <h3>{{ 'product.description.title' | t }}</h3>
-            <div class="product-description">{{ description }}</div>
+            <p class="product-description">{{ description }}</p>
         </div>
 
-        <div class="shipping-returns">
-            <div class="info-section shipping">
-                <h4>{{ 'product.shipping.title' | t }}</h4>
-                <p>{{ shipping }}</p>
-            </div>
 
-            <div class="info-section returns">
-                <h4>{{ 'product.returns.title' | t }}</h4>
-                <p>{{ returns }}</p>
-            </div>
+        <div class="info-section shipping">
+            <h3>{{ 'product.shipping.title' | t }}</h3>
+            <p>{{ shipping }}</p>
         </div>
+
+        <div class="info-section returns">
+            <h3>{{ 'product.returns.title' | t }}</h3>
+            <p>{{ returns }}</p>
+        </div>
+
 
     </div><!-- end product bottom -->
 
