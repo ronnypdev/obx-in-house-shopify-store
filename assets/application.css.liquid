@@ -57,6 +57,34 @@ table {
     ==> Variables Partial <==
 ====================================
 */
+/* noto-serif-regular - latin */
+@font-face {
+  font-family: "Noto Serif";
+  font-style: normal;
+  font-weight: 400;
+  src: url('{{ "noto-serif-v8-latin-regular.eot" | asset_url }}') format("embedded-opentype"), url('{{ "noto-serif-v8-latin-regular.eot" | asset_url }}') format("embedded-opentype"), url('{{ "noto-serif-v8-latin-regular.woff2" | asset_url }}') format("woff2"), url('{{ "noto-serif-v8-latin-regular.woff" | asset_url }}') format("woff"), url('{{ "noto-serif-v8-latin-regular.ttf" | asset_url }}') format("truetype"), url('{{ "noto-serif-v8-latin-regular.svg#NotoSerif" | asset_url }}') format("svg#NotoSerif");
+}
+/* noto-serif-700 - latin */
+@font-face {
+  font-family: "Noto Serif";
+  font-style: normal;
+  font-weight: 700;
+  src: url('{{ "noto-serif-v8-latin-700.eot" | asset_url }}') format("embedded-opentype"), url('{{ "noto-serif-v8-latin-700.eot" | asset_url }}') format("embedded-opentype"), url('{{ "noto-serif-v8-latin-700.woff2" | asset_url }}') format("woff2"), url('{{ "noto-serif-v8-latin-700.woff" | asset_url }}') format("woff"), url('{{ "noto-serif-v8-latin-700.ttf" | asset_url }}') format("truetype"), url('{{ "noto-serif-v8-latin-700.svg#NotoSerif" | asset_url }}') format("svg#NotoSerif");
+}
+/* ibm-plex-mono-regular - latin */
+@font-face {
+  font-family: "Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url('{{ "ibm-plex-mono-v5-latin-regular.eot" | asset_url }}') format("embedded-opentype"), url('{{ "ibm-plex-mono-v5-latin-regular.eot" | asset_url }}') format("embedded-opentype"), url('{{ "ibm-plex-mono-v5-latin-regular.woff2" | asset_url }}') format("woff2"), url('{{ "ibm-plex-mono-v5-latin-regular.woff" | asset_url }}') format("woff"), url('{{ "ibm-plex-mono-v5-latin-regular.ttf" | asset_url }}') format("truetype"), url('{{ "ibm-plex-mono-v5-latin-regular.svg#NotoSerif" | asset_url }}') format("svg#NotoSerif");
+}
+/* ibm-plex-mono-700 - latin */
+@font-face {
+  font-family: "Plex Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: url('{{ "ibm-plex-mono-v5-latin-700.eot" | asset_url }}') format("embedded-opentype"), url('{{ "ibm-plex-mono-v5-latin-700.eot" | asset_url }}') format("embedded-opentype"), url('{{ "ibm-plex-mono-v5-latin-700.woff2" | asset_url }}') format("woff2"), url('{{ "ibm-plex-mono-v5-latin-700.woff" | asset_url }}') format("woff"), url('{{ "ibm-plex-mono-v5-latin-700.ttf" | asset_url }}') format("truetype"), url('{{ "ibm-plex-mono-v5-latin-700.svg#NotoSerif" | asset_url }}') format("svg#NotoSerif");
+}
 /**
 ====================================
     ==> Mixins Partial <==
@@ -68,7 +96,7 @@ table {
 ====================================
 */
 * {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Plex Mono", "Courier New", Courier, monospace;
   box-sizing: border-box;
 }
 
@@ -86,7 +114,7 @@ html {
 }
 
 body {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Plex Mono", "Courier New", Courier, monospace;
   font-size: 13px;
   background-color: #ffffff;
   background-size: 100%;
@@ -113,7 +141,7 @@ h2,
 h3,
 .h3,
 .quantity-picker .quantity-text {
-  font-family: "Georgia", "Times New Roman", Times, serif;
+  font-family: "Noto Serif", "Georgia", "Times New Roman", Times, serif;
   font-weight: 700;
   color: #333333;
 }
@@ -138,13 +166,13 @@ h3,
 }
 
 p, .quantity-picker button {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Plex Mono", "Courier New", Courier, monospace;
   font-size: 13px;
   line-height: 20px;
 }
 
 .p-large, #page-product .description p, #page-product .description .quantity-picker button, .quantity-picker #page-product .description button, .search-form #search-term {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Plex Mono", "Courier New", Courier, monospace;
   font-size: 31px;
   line-height: 40px;
 }
@@ -164,7 +192,7 @@ a:hover {
 }
 
 .text-link {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Plex Mono", "Courier New", Courier, monospace;
   color: #555555;
   fill: currentColor;
 }
@@ -248,7 +276,7 @@ button[type=submit].button-cta,
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   text-align: left;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Plex Mono", "Courier New", Courier, monospace;
   font-size: 13px;
   line-height: 20px;
   color: currentColor;
