@@ -7,6 +7,7 @@
 @import './global/styleguide';
 @import './global/layout';
 @import './global/utils';
+@import './global/slick';
 
 //snippets
 @import './snippets/inline-icon';
@@ -22,10 +23,11 @@
 @import './snippets/product-more';
 @import './snippets/search-form';
 @import './snippets/error-404';
+@import './snippets/slider-buttons';
 
 // Sections
-// @import './sections/'
-
+@import './sections/slideshow';
+@import './sections/content';
 // Templates
 @import './templates/collections';
 @import './templates/product';

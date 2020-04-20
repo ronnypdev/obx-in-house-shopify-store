@@ -84,7 +84,7 @@ $(document).ready(function () {
         currencyPickerSelector,
         currencyPicker.onCurrencyChanged
       );
-    },
+    }
   };
 
   currencyPicker.init();
@@ -109,7 +109,7 @@ $(document).ready(function () {
       let formOptions = {
         option1: null,
         option2: null,
-        option3: null,
+        option3: null
       };
 
       selectedVariant = null;
@@ -176,7 +176,7 @@ $(document).ready(function () {
         addToCartFormSelector,
         productForm.validate
       );
-    },
+    }
   };
 
   productForm.init();
@@ -192,7 +192,7 @@ $(document).ready(function () {
         data: $(this).serialize(),
         dataType: 'json',
         success: ajaxify.onCartUpdated,
-        error: ajaxify.onError,
+        error: ajaxify.onError
       });
     },
     onCartUpdated: function () {
@@ -220,7 +220,7 @@ $(document).ready(function () {
           } else {
             ajaxify.closeCart();
           }
-        },
+        }
       });
     },
     onError: function (XMLHttpRequest, textStatus) {
@@ -256,7 +256,7 @@ $(document).ready(function () {
         '.js-cart-link, .js-keep-shopping',
         ajaxify.onCartButtonClick
       );
-    },
+    }
   };
 
   ajaxify.init();
@@ -316,7 +316,7 @@ $(document).ready(function () {
         quantityPicker.onButtonClick
       );
       $(document).on('change', quantityFieldSelector, quantityPicker.onChange);
-    },
+    }
   };
   quantityPicker.init();
 
@@ -338,7 +338,7 @@ $(document).ready(function () {
 
       let changes = {
         quantity: quantity,
-        id: id,
+        id: id
       };
       let isInMiniCart = lineItem.isInMiniCart(this);
       if (isInMiniCart) {
@@ -362,7 +362,7 @@ $(document).ready(function () {
         lineQuantitySelector,
         lineItem.onLineQuantityChanged
       );
-    },
+    }
   };
   lineItem.init();
 
@@ -377,4 +377,77 @@ $(document).ready(function () {
   };
 
   $(document).on('keyup', searchInputSelector, onsearchInputKeyUp);
+
+  // Slide show
+  let slideSelector = '.js-slides';
+  let prevButtonSelector = '.js-slider-button-prev';
+  let nextButtonSelector = '.js-slider-button-next';
+
+  // Product
+  let productSlideshowSelector = '.js-product-slideshow';
+  let currentSlideSelector = '.js-current-slide';
+
+  let productSlideshows = {
+    onBeforeChange: function (event, slick, currentSlide, nextSlide) {
+      let $currentSlide = slick.$slider
+        .closest(productSlideshowSelector)
+        .find(currentSlideSelector);
+      $currentSlide.text(nextSlide + 1);
+    },
+    setup: function ($element) {
+      let $slides = $element.find(slideSelector);
+      let $prevButton = $element.find(prevButtonSelector);
+      let $nextButton = $element.find(nextButtonSelector);
+
+      let productSlideshowOptions = {
+        fade: true,
+        nextArrow: $nextButton,
+        prevArrow: $prevButton
+      };
+
+      if ($slides.children().length > 1) {
+        $slides
+          .on('beforeChange', productSlideshows.onBeforeChange)
+          .slick(productSlideshowOptions);
+      }
+    },
+    init: function () {
+      $(productSlideshowSelector).each(function () {
+        productSlideshows.setup($(this));
+      });
+    }
+  };
+
+  productSlideshows.init();
+
+  // Section Slideshow
+  let sectionSlideshowSelector = '.js-section-slideshow';
+  let sectionsSlideshows = {
+    setup: function ($element) {
+      let $slides = $element.find(slideSelector);
+      let shouldAutoplay = $element.attr('data-autoplay') === 'true';
+      let autoplaySpeed = parseInt($element.attr('data-auto-play-speed'));
+      let $prevButton = $element.find(prevButtonSelector);
+      let $nextButton = $element.find(nextButtonSelector);
+
+      let sectionSlideshowOptions = {
+        fade: true,
+        nextArrow: $nextButton,
+        prevArrow: $prevButton,
+        autoplay: shouldAutoplay,
+        autoplaySpeed: autoplaySpeed
+      };
+
+      if ($slides.children().length > 1) {
+        $slides.slick(sectionSlideshowOptions);
+      }
+    },
+    init: function () {
+      $(sectionSlideshowSelector).each(function () {
+        sectionsSlideshows.setup($(this));
+      });
+    }
+  };
+
+  sectionsSlideshows.init();
 });

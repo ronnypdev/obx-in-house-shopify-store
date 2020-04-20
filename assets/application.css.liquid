@@ -212,6 +212,16 @@ button[type=submit].button-cta,
   width: 100%;
   padding: 20px;
 }
+.text-white button[type=submit],
+.text-white .button {
+  background: #ffffff;
+  color: #000000;
+}
+.text-white button[type=submit]:hover,
+.text-white .button:hover {
+  color: #000000;
+  background: #e6e6e6;
+}
 
 .styled-select {
   position: relative;
@@ -252,6 +262,14 @@ button[type=submit].button-cta,
 }
 .text-white .styled-select:hover {
   color: #ffffff;
+}
+
+blockquote p, blockquote .quantity-picker button, .quantity-picker blockquote button {
+  font-weight: 700;
+}
+blockquote cite {
+  display: block;
+  margin-top: 20px;
 }
 
 /**
@@ -330,6 +348,105 @@ button[type=submit].button-cta,
 }
 .text-white a:hover {
   color: #ffffff;
+}
+
+/* Slider */
+.slick-slider {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: none;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slick-track:before,
+.slick-track:after {
+  display: table;
+  content: "";
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+
+[dir=rtl] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-loading .slick-slide {
+  visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
 }
 
 /**
@@ -817,6 +934,153 @@ input[type=radio]:checked + label .option-color .option-color-inner:after {
 
 /**
 ====================================
+    ==> Slider Buttons Partial <==
+====================================
+*/
+.slider-button {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  text-align: left;
+  font-size: 50px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #555555;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  z-index: 1;
+  overflow: hidden;
+}
+.slider-button:hover {
+  color: #000000;
+}
+.slider-button.prev {
+  left: 0;
+}
+.slider-button.next {
+  right: 0;
+}
+
+/**
+====================================
+    ==> Slideshow Partial <==
+====================================
+*/
+.hero-slideshow {
+  width: 100%;
+  height: calc(100vh - 100px);
+  overflow: hidden;
+}
+.hero-slideshow .slideshow-wrap {
+  position: relative;
+  height: 100%;
+}
+.hero-slideshow .slide {
+  width: 100%;
+  height: calc(100vh - 100px);
+  position: relative;
+  z-index: 0;
+  background-color: #fafafa;
+}
+.hero-slideshow .slide-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.hero-slideshow .slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-slideshow .slide-content {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: relative;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hero-slideshow .slide-content p, .hero-slideshow .slide-content .quantity-picker button, .quantity-picker .hero-slideshow .slide-content button {
+  margin-top: 20px;
+}
+.hero-slideshow .slide-content .button {
+  margin-top: 20px;
+}
+
+.content-block-collection {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.content-block-image_text .image-text {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.content-block-image_text .image-text > * {
+  flex: 0 0 50%;
+}
+.content-block-image_text .image-text.direction-rtl {
+  flex-direction: row-reverse;
+}
+.content-block-image_text .image-text.bgcolor-black .block-content {
+  background-color: #000000;
+}
+.content-block-image_text .block-image img {
+  display: block;
+  width: 100%;
+}
+.content-block-image_text .block-content {
+  padding: 40px;
+}
+.content-block-image_text .block-content-inner {
+  height: 100%;
+  width: 100%;
+  align-items: flex-start;
+  max-width: 250px;
+  margin: 0 auto;
+}
+.content-block-image_text p, .content-block-image_text .quantity-picker button, .quantity-picker .content-block-image_text button,
+.content-block-image_text .button {
+  margin-top: 20px;
+}
+
+.content-block-quote {
+  background: #fafafa;
+  padding: 100px 40px;
+  text-align: center;
+}
+.content-block-quote blockquote {
+  text-align: left;
+  width: 100%;
+  max-width: 660px;
+  margin: 0 auto;
+}
+.content-block-quote .button {
+  margin-top: 40px;
+}
+
+/**
+====================================
     ==> Collection Partial <==
 ====================================
 */
@@ -865,6 +1129,17 @@ input[type=radio]:checked + label .option-color .option-color-inner:after {
 }
 #page-product .product-images {
   grid-column: 3/6;
+  position: relative;
+}
+#page-product .slider-button.prev {
+  left: auto;
+  right: 100%;
+  margin-right: 20px;
+}
+#page-product .slider-button.next {
+  right: auto;
+  left: 100%;
+  margin-left: 20px;
 }
 #page-product .single-image:not(:first-of-type) {
   display: none;

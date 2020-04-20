@@ -110,6 +110,16 @@ button[type='submit'],
     width: 100%;
     padding: $line-global;
   }
+
+  .text-white & {
+    background: $white;
+    color: $black;
+
+    &:hover {
+      color: $black;
+      background: darken($white, 10%);
+    }
+  }
 }
 
 .styled-select {
@@ -140,5 +150,16 @@ button[type='submit'],
     &:hover {
       color: $white;
     }
+  }
+}
+
+blockquote {
+  p {
+    font-weight: $type-bold;
+  }
+
+  cite {
+    display: block;
+    margin-top: $line-global;
   }
 }

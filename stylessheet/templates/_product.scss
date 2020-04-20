@@ -9,6 +9,20 @@
 
   .product-images {
     grid-column: 3/6;
+    position: relative;
+  }
+
+  .slider-button {
+    &.prev {
+      left: auto;
+      right: 100%;
+      margin-right: $line-global;
+    }
+    &.next {
+      right: auto;
+      left: 100%;
+      margin-left: $line-global;
+    }
   }
 
   .single-image:not(:first-of-type) {

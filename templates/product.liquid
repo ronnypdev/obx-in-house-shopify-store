@@ -26,16 +26,20 @@
 <div id="page-product">
 
     <div class="wrapper grid" id="product-top">
-        <div class="product-images">
-            {% for image in product.images %}
-                <div class="single-image">
-                    <img src="{{ image.src | img_url: '600x' }}" alt="{{ image.alt | escape }}">
+        <div class="product-images js-product-slideshow">
+            <div class="slides js-slides">
+                {% for image in product.images %}
+                    <div class="single-image">
+                        <img src="{{ image.src | img_url: '600x' }}" alt="{{ image.alt | escape }}">
 
-                </div>
-            {% endfor %}
-
+                    </div>
+                {% endfor %}
+            </div><!-- end image slides -->
 
             {% if product.images.size > 1 %}
+
+                {% include 'slider-buttons' %}
+
                 <div class="image-counter">
                     <span class="js-current-slide">
                         1
