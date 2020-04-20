@@ -33,6 +33,10 @@
     }
   }
 
+  .main-menu-list {
+    margin-left: $offset-global;
+  }
+
   .secondary-menu-list {
     .text-link:not(:hover) {
       color: $text-color-light-white;

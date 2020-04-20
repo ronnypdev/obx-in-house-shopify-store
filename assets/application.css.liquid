@@ -81,6 +81,10 @@ body {
   line-height: 20px;
 }
 
+html {
+  background-color: #000000;
+}
+
 body {
   font-family: "Courier New", Courier, monospace;
   font-size: 13px;
@@ -89,6 +93,7 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   padding-top: 100px;
+  background-color: #ffffff;
 }
 
 img {
@@ -580,6 +585,9 @@ blockquote cite {
 #footer-global .nav-list:not(:first-of-type) {
   margin-left: 20px;
 }
+#footer-global .main-menu-list {
+  margin-left: 40px;
+}
 #footer-global .secondary-menu-list .text-link:not(:hover) {
   color: #aaaaaa;
 }
@@ -703,6 +711,10 @@ blockquote cite {
 .cart-contents .currency-note {
   text-align: center;
   margin-top: 20px;
+}
+.cart-contents .keep-shopping {
+  display: table;
+  margin: 0 auto;
 }
 
 #mini-cart {
@@ -1255,4 +1267,26 @@ input[type=radio]:checked + label .option-color .option-color-inner:after {
 }
 #page-search.search-performed #search-form-wrap {
   max-height: 600px;
+}
+
+/**
+====================================
+    ==> Page Partial <==
+====================================
+*/
+#page .page-content {
+  margin-top: 40px;
+}
+#page .page-inner {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/**
+====================================
+    ==> Page About Partial <==
+====================================
+*/
+#page-about .page-about-top {
+  padding: 40px;
 }
